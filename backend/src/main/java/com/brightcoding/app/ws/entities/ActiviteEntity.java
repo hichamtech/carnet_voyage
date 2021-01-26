@@ -1,6 +1,8 @@
 package com.brightcoding.app.ws.entities;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,14 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name="activite")
 public class ActiviteEntity  implements Serializable{
 	
-    /**
+    
+	
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1315227053390274675L;
+	private static final long serialVersionUID = -352684298890014489L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idActivite;
@@ -32,6 +37,108 @@ public class ActiviteEntity  implements Serializable{
     private DomaineActivite domaineActivite;
     
     @OneToMany(mappedBy = "activite")
-    Set<> ratings;
+    Set<PlanActiviteEntity> planActivite;
+    
+    @OneToMany(mappedBy = "activite")
+    Set<SejourEntity>  sejour;
+    
+
+	public ActiviteEntity(Long idActivite, String name, double price, String description, Byte[] photo,
+			DomaineActivite domaineActivite, Set<PlanActiviteEntity> plan, Set<SejourEntity>  sejour) {
+		super();
+		this.idActivite = idActivite;
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.photo = photo;
+		this.domaineActivite = domaineActivite;
+		this.planActivite = plan;
+		this.sejour = sejour;
+	}
+	
+
+	public ActiviteEntity() {
+		super();
+	}
+
+
+	public Long getIdActivite() {
+		return idActivite;
+	}
+
+	public void setIdActivite(Long idActivite) {
+		this.idActivite = idActivite;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Byte[] photo) {
+		this.photo = photo;
+	}
+
+	public DomaineActivite getDomaineActivite() {
+		return domaineActivite;
+	}
+
+	public void setDomaineActivite(DomaineActivite domaineActivite) {
+		this.domaineActivite = domaineActivite;
+	}
+
+	public Set<PlanActiviteEntity> getPlan() {
+		return planActivite;
+	}
+
+	public void setPlan(Set<PlanActiviteEntity> plan) {
+		this.planActivite = plan;
+	}
+	
+
+
+	public Set<SejourEntity> getSejour() {
+		return sejour;
+	}
+
+
+	public void setSejour(Set<SejourEntity> sejour) {
+		this.sejour = sejour;
+	}
+
+
+	@Override
+	public String toString() {
+		return "ActiviteEntity [idActivite=" + idActivite + ", name=" + name + ", price=" + price + ", description="
+				+ description + ", photo=" + Arrays.toString(photo) + ", domaineActivite=" + domaineActivite
+				+ ", planActivite=" + planActivite + ", sejour=" + sejour + "]";
+	}
+
+
+	
+    
     
 }

@@ -62,6 +62,8 @@ public class UserEntity implements Serializable {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="users")
 	private Set<GroupEntity> groups = new HashSet<>();
 	
+	 @OneToMany(mappedBy = "client")
+	 Set<SejourEntity>  sejour;
 
 	public long getId() {
 		return id;
@@ -157,6 +159,14 @@ public class UserEntity implements Serializable {
 
 	public void setAdmin(Boolean admin) {
 		this.admin = admin;
+	}
+
+	public Set<SejourEntity> getSejour() {
+		return sejour;
+	}
+
+	public void setSejour(Set<SejourEntity> sejour) {
+		this.sejour = sejour;
 	}
 
 }

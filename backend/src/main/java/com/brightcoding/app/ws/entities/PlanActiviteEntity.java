@@ -2,13 +2,15 @@ package com.brightcoding.app.ws.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@Embeddable
+@Entity(name="plan_activite")
 public class PlanActiviteEntity implements Serializable {
 	
 
@@ -20,89 +22,53 @@ public class PlanActiviteEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long idPlan;
 
-	 @Column(name = "id_horraire")
-	 private Long horraireId;
+	 @ManyToOne
+	 @JoinColumn(name = "idActivite")
+	 private ActiviteEntity activite;
 
-	 @Column(name = "id_activite")
-	 private Long activiteId;
+	  @ManyToOne
+	  @JoinColumn(name = "idHorraire")
+	    private HorrairesEntity horraire;
 
-	public Long getIdPlan() {
-		return idPlan;
-	}
+		public PlanActiviteEntity(Long idPlan, ActiviteEntity activite, HorrairesEntity horraire) {
+			super();
+			this.idPlan = idPlan;
+			this.activite = activite;
+			this.horraire = horraire;
+		}
 
-	public void setIdPlan(Long idPlan) {
-		this.idPlan = idPlan;
-	}
+		public PlanActiviteEntity() {
+			super();
+		}
 
-	public Long getHorraireId() {
-		return horraireId;
-	}
+		public Long getIdPlan() {
+			return idPlan;
+		}
 
-	public void setHorraireId(Long horraireId) {
-		this.horraireId = horraireId;
-	}
+		public void setIdPlan(Long idPlan) {
+			this.idPlan = idPlan;
+		}
 
-	public Long getActiviteId() {
-		return activiteId;
-	}
+		public ActiviteEntity getActivite() {
+			return activite;
+		}
 
-	public void setActiviteId(Long activiteId) {
-		this.activiteId = activiteId;
-	}
+		public void setActivite(ActiviteEntity activite) {
+			this.activite = activite;
+		}
 
-	public PlanActiviteEntity(Long idPlan, Long horraireId, Long activiteId) {
-		super();
-		this.idPlan = idPlan;
-		this.horraireId = horraireId;
-		this.activiteId = activiteId;
-	}
+		public HorrairesEntity getHorraire() {
+			return horraire;
+		}
 
-	public PlanActiviteEntity() {
-		super();
-	}
+		public void setHorraire(HorrairesEntity horraire) {
+			this.horraire = horraire;
+		}
 
-	@Override
-	public String toString() {
-		return "PlanActiviteEntity [idPlan=" + idPlan + ", horraireId=" + horraireId + ", activiteId=" + activiteId
-				+ "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((activiteId == null) ? 0 : activiteId.hashCode());
-		result = prime * result + ((horraireId == null) ? 0 : horraireId.hashCode());
-		result = prime * result + ((idPlan == null) ? 0 : idPlan.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PlanActiviteEntity other = (PlanActiviteEntity) obj;
-		if (activiteId == null) {
-			if (other.activiteId != null)
-				return false;
-		} else if (!activiteId.equals(other.activiteId))
-			return false;
-		if (horraireId == null) {
-			if (other.horraireId != null)
-				return false;
-		} else if (!horraireId.equals(other.horraireId))
-			return false;
-		if (idPlan == null) {
-			if (other.idPlan != null)
-				return false;
-		} else if (!idPlan.equals(other.idPlan))
-			return false;
-		return true;
-	}
+		@Override
+		public String toString() {
+			return "PlanActiviteEntity [idPlan=" + idPlan + ", activite=" + activite + ", horraire=" + horraire + "]";
+		}
 	 
 	 
 }
