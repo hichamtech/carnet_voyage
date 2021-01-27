@@ -34,7 +34,7 @@ public class ActiviteEntity  implements Serializable{
     
     @ManyToOne
 	@JoinColumn(name="idDomaine")
-    private DomaineActivite domaineActivite;
+    private DomaineActiviteEntity domaineActivite;
     
     @OneToMany(mappedBy = "activite")
     Set<PlanActiviteEntity> planActivite;
@@ -44,7 +44,7 @@ public class ActiviteEntity  implements Serializable{
     
 
 	public ActiviteEntity(Long idActivite, String name, double price, String description, Byte[] photo,
-			DomaineActivite domaineActivite, Set<PlanActiviteEntity> plan, Set<SejourEntity>  sejour) {
+			DomaineActiviteEntity domaineActivite, Set<PlanActiviteEntity> plan, Set<SejourEntity>  sejour) {
 		super();
 		this.idActivite = idActivite;
 		this.name = name;
@@ -102,11 +102,11 @@ public class ActiviteEntity  implements Serializable{
 		this.photo = photo;
 	}
 
-	public DomaineActivite getDomaineActivite() {
+	public DomaineActiviteEntity getDomaineActivite() {
 		return domaineActivite;
 	}
 
-	public void setDomaineActivite(DomaineActivite domaineActivite) {
+	public void setDomaineActivite(DomaineActiviteEntity domaineActivite) {
 		this.domaineActivite = domaineActivite;
 	}
 

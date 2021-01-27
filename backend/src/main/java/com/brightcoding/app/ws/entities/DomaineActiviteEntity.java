@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity(name="domaine_activite")
-public class DomaineActivite implements Serializable {
+public class DomaineActiviteEntity implements Serializable {
 	
 
 	/**
@@ -22,20 +22,23 @@ public class DomaineActivite implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDomaine;
+	
+	private String codeDomaine;
     private String  name;
 
 	@OneToMany
 	@JoinColumn(name="idActivite")
 	private Collection<ActiviteEntity> activite ;
 
-	public DomaineActivite(Long idDomaine, String name, Collection<ActiviteEntity> activite) {
+	public DomaineActiviteEntity(Long idDomaine, String codeDomaine,String name, Collection<ActiviteEntity> activite) {
 		super();
 		this.idDomaine = idDomaine;
 		this.name = name;
 		this.activite = activite;
+		this.codeDomaine  = codeDomaine;
 	}
 
-	public DomaineActivite() {
+	public DomaineActiviteEntity() {
 		super();
 	}
 
@@ -63,10 +66,14 @@ public class DomaineActivite implements Serializable {
 		this.activite = activite;
 	}
 
-	@Override
-	public String toString() {
-		return "DomaineActivite [idDomaine=" + idDomaine + ", name=" + name + ", activite=" + activite + "]";
+	public String getCodeDomaine() {
+		return codeDomaine;
 	}
+
+	public void setCodeDomaine(String codeDomaine) {
+		this.codeDomaine = codeDomaine;
+	}
+
 	
 	
 	

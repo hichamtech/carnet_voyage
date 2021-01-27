@@ -9,8 +9,7 @@ public class UserResponse {
 	private String lastName;
 	private String email;
 	private Boolean admin;
-	private List<AddressResponse> addresses;
-	private ContactResponse contact;
+	
 
 
 	public String getUserId() {
@@ -45,21 +44,7 @@ public class UserResponse {
 		this.email = email;
 	}
 
-	public List<AddressResponse> getAddresses() {
-		return addresses;
-	}
 
-	public void setAddresses(List<AddressResponse> addresses) {
-		this.addresses = addresses;
-	}
-
-	public ContactResponse getContact() {
-		return contact;
-	}
-
-	public void setContact(ContactResponse contact) {
-		this.contact = contact;
-	}
 
 	public Boolean getAdmin() {
 		return admin;

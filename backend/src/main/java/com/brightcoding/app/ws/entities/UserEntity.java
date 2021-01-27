@@ -53,14 +53,11 @@ public class UserEntity implements Serializable {
 	private Boolean emailVerificationStatus = false;
 	
 	
-	@OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<AddressEntity> addresses;
+
 	
-	@OneToOne(mappedBy="user", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	private ContactEntity contact;
+
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="users")
-	private Set<GroupEntity> groups = new HashSet<>();
+
 	
 	 @OneToMany(mappedBy = "client")
 	 Set<SejourEntity>  sejour;
@@ -137,21 +134,8 @@ public class UserEntity implements Serializable {
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
 
-	public List<AddressEntity> getAddresses() {
-		return addresses;
-	}
 
-	public void setAddresses(List<AddressEntity> addresses) {
-		this.addresses = addresses;
-	}
 
-	public ContactEntity getContact() {
-		return contact;
-	}
-
-	public void setContact(ContactEntity contact) {
-		this.contact = contact;
-	}
 
 	public Boolean getAdmin() {
 		return admin;

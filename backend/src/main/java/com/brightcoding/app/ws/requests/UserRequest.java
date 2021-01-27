@@ -31,17 +31,10 @@ public class UserRequest {
 	
 	private Boolean admin;
 	
-	private List<AddressRequest> addresses;
-	
-	private ContactRequest contact;
+
 	
 	
-	public ContactRequest getContact() {
-		return contact;
-	}
-	public void setContact(ContactRequest contact) {
-		this.contact = contact;
-	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -67,12 +60,7 @@ public class UserRequest {
 		this.password = password;
 	}
 	
-	public List<AddressRequest> getAddresses() {
-		return addresses;
-	}
-	public void setAddresses(List<AddressRequest> addresses) {
-		this.addresses = addresses;
-	}
+
 	public Boolean getAdmin() {
 		return admin;
 	}

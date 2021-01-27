@@ -21,7 +21,6 @@ import com.brightcoding.app.ws.entities.UserEntity;
 import com.brightcoding.app.ws.repositories.UserRepository;
 import com.brightcoding.app.ws.services.UserService;
 import com.brightcoding.app.ws.shared.Utils;
-import com.brightcoding.app.ws.shared.dto.AddressDto;
 import com.brightcoding.app.ws.shared.dto.UserDto;
 
 
@@ -47,16 +46,7 @@ public class UserSeviceImpl implements UserService {
 		if(checkUser != null) throw new RuntimeException("User Alrady Exists !");
 		
 		
-		for(int i=0; i < user.getAddresses().size(); i++) {
-			
-			AddressDto address = user.getAddresses().get(i);
-			address.setUser(user);
-			address.setAddressId(util.generateStringId(30));
-			user.getAddresses().set(i, address);
-		}
-		
-		user.getContact().setContactId(util.generateStringId(30));
-		user.getContact().setUser(user);
+	
 		
         ModelMapper modelMapper = new ModelMapper();
 		
