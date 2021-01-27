@@ -1,11 +1,8 @@
-package com.brightcoding.app.ws.responses;
-
-
+package com.brightcoding.app.ws.shared.dto;
 
 import com.brightcoding.app.ws.entities.DomaineActiviteEntity;
 
-public class ActiviteResponse {
-
+public class ActiviteDto {
 	private String codeActivite;
     private  String name;
     private double price;

@@ -7,5 +7,5 @@ import com.brightcoding.app.ws.entities.ActiviteEntity;
 @Repository
 public interface ActiviteRepository extends CrudRepository<ActiviteEntity,Long>
 {
-
+	ActiviteEntity findByCodeActivite(String codeActivite);
 }

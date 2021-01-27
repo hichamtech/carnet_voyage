@@ -25,9 +25,12 @@ public class ActiviteEntity  implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idActivite;
+	
+	private String codeActivite;
     private  String name;
     private double price;
     private String description;
+    
     
     @Lob
 	private Byte[] photo;
@@ -44,7 +47,9 @@ public class ActiviteEntity  implements Serializable{
     
 
 	public ActiviteEntity(Long idActivite, String name, double price, String description, Byte[] photo,
-			DomaineActiviteEntity domaineActivite, Set<PlanActiviteEntity> plan, Set<SejourEntity>  sejour) {
+			DomaineActiviteEntity domaineActivite, Set<PlanActiviteEntity> plan, Set<SejourEntity>  sejour
+			,String codeActivite
+			) {
 		super();
 		this.idActivite = idActivite;
 		this.name = name;
@@ -54,6 +59,7 @@ public class ActiviteEntity  implements Serializable{
 		this.domaineActivite = domaineActivite;
 		this.planActivite = plan;
 		this.sejour = sejour;
+		this.codeActivite = codeActivite;
 	}
 	
 
@@ -129,13 +135,28 @@ public class ActiviteEntity  implements Serializable{
 		this.sejour = sejour;
 	}
 
+	
+
+	public String getCodeActivite() {
+		return codeActivite;
+	}
+
+
+	public void setCodeActivite(String codeActivite) {
+		this.codeActivite = codeActivite;
+	}
+
 
 	@Override
 	public String toString() {
-		return "ActiviteEntity [idActivite=" + idActivite + ", name=" + name + ", price=" + price + ", description="
-				+ description + ", photo=" + Arrays.toString(photo) + ", domaineActivite=" + domaineActivite
-				+ ", planActivite=" + planActivite + ", sejour=" + sejour + "]";
+		return "ActiviteEntity [idActivite=" + idActivite + ", codeActivite=" + codeActivite + ", name=" + name
+				+ ", price=" + price + ", description=" + description + ", photo=" + Arrays.toString(photo)
+				+ ", domaineActivite=" + domaineActivite + ", planActivite=" + planActivite + ", sejour=" + sejour
+				+ "]";
 	}
+
+
+	
 
 
 	
