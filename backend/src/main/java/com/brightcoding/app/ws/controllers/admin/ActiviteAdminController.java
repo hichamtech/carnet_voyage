@@ -81,7 +81,7 @@ public class ActiviteAdminController {
 	
 	//deleteActivite
 	@DeleteMapping("delete/{id}")
-	public ResponseEntity<?> deleteDomaine(@PathVariable(name = "id") String codeActivite) {
+	public ResponseEntity<?> deleteActivite(@PathVariable(name = "id") String codeActivite) {
 
 		activiteService.deleteActivite(codeActivite);
 

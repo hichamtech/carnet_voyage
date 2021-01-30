@@ -37,9 +37,19 @@
               },
               {
                 "input": "src/global.scss"
+              },
+              {
+                "input": "./node_modules/ngx-toastr/toastr.css"
+              },
+              {
+                "input": "./node_modules/bootswatch/dist/journal/bootstrap.min.css"
               }
+              
             ],
-            "scripts": []
+            "scripts": [
+
+             
+            ]
           },
           "configurations": {
             "production": {
