@@ -51,14 +51,7 @@ public class UserEntity implements Serializable {
 	
 	@Column(nullable=false)
 	private Boolean emailVerificationStatus = false;
-	
-	
 
-	
-
-	
-
-	
 	 @OneToMany(mappedBy = "client")
 	 Set<SejourEntity>  sejour;
 
@@ -133,9 +126,6 @@ public class UserEntity implements Serializable {
 	public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
-
-
-
 
 	public Boolean getAdmin() {
 		return admin;
