@@ -31,7 +31,6 @@ public class SejourEntity implements Serializable{
 	 
 	 @ManyToOne
 	 @JoinColumn(name = "id")
-	
 	 private UserEntity client;
 
 	public SejourEntity(Long idSejour, String dateSejour, ActiviteEntity activite,UserEntity client) {
@@ -72,25 +71,18 @@ public class SejourEntity implements Serializable{
 		this.activite = activite;
 	}
 
-
 	public UserEntity getClient() {
 		return client;
 	}
 
-
 	public void setClient(UserEntity client) {
 		this.client = client;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Sejour [idSejour=" + idSejour + ", dateSejour=" + dateSejour + ", activite=" + activite + ", client="
 				+ client + "]";
 	}
-
-
-	
-	 
 	 
 }
