@@ -8,10 +8,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.brightcoding.app.ws.entities.ActiviteEntity;
 import com.brightcoding.app.ws.entities.DomaineActiviteEntity;
 import com.brightcoding.app.ws.repositories.DomaineActiviteRepository;
 import com.brightcoding.app.ws.services.DomaineActiviteService;
 import com.brightcoding.app.ws.shared.Utils;
+import com.brightcoding.app.ws.shared.dto.ActiviteDto;
 import com.brightcoding.app.ws.shared.dto.DomaineActiviteDto;
 import org.modelmapper.TypeToken;
 
@@ -36,7 +38,7 @@ public class DomaineActiviteServiceImpl  implements DomaineActiviteService{
 
 	@Override
 	public DomaineActiviteDto createDomaine(DomaineActiviteDto domaine,String name) {
-		domaine.setCodeDomaine(util.generateStringId(30));
+		domaine.setCodeDomaine(util.generateStringId(5));
 		ModelMapper modelMapper = new ModelMapper();
 		
 		DomaineActiviteEntity domaineEntity = modelMapper.map(domaine, DomaineActiviteEntity.class);
@@ -50,8 +52,13 @@ public class DomaineActiviteServiceImpl  implements DomaineActiviteService{
 
 	@Override
 	public DomaineActiviteDto getDomaine(String codeDomaine) {
-		// TODO Auto-generated method stub
-		return null;
+		DomaineActiviteEntity domaineEntity = domaineRespositroy.findByCodeDomaine(codeDomaine);
+		
+		ModelMapper modelMapper = new ModelMapper();
+		
+		DomaineActiviteDto domaineDto = modelMapper.map(domaineEntity, DomaineActiviteDto.class);
+		
+		return domaineDto;	
 	}
 
 	@Override

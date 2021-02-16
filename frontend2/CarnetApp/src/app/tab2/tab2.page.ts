@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../services/authentication.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  user = null;
+ 
+  constructor(private auth: AuthenticationService) {}
+ 
+  ionViewWillEnter() {
+    this.user = this.auth.getUser();
+  }
+ 
+  logout() {
+    this.auth.logout();
+  }
 
 }

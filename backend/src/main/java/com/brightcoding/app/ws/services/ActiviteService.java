@@ -13,4 +13,7 @@ public interface ActiviteService {
 	ActiviteDto updateActivite(ActiviteDto activite,String codeActivite);
 	
 	void deleteActivite(String codeActivite);
+	
+	ActiviteDto getActivite(String codeActivite);
+
 }

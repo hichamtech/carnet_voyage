@@ -35,7 +35,7 @@ public class ActiviteServiceImpl implements ActiviteService {
 	@Override
 	public ActiviteDto createActivite(ActiviteDto activite) {
 		
-		activite.setCodeActivite(util.generateStringId(30));
+		activite.setCodeActivite(util.generateStringId(5));
 		
 		ModelMapper modelMapper = new ModelMapper();
 		
@@ -72,6 +72,18 @@ public class ActiviteServiceImpl implements ActiviteService {
 		if(activiteEntity == null) throw new RuntimeException("Domaine not found");
 		
 		activiteRespositroy.delete(activiteEntity);
+	}
+
+	@Override
+	public ActiviteDto getActivite(String codeActivite) {
+		
+		ActiviteEntity domaineEntity = activiteRespositroy.findByCodeActivite(codeActivite);
+		
+		ModelMapper modelMapper = new ModelMapper();
+		
+		ActiviteDto domaineDto = modelMapper.map(domaineEntity, ActiviteDto.class);
+		
+		return domaineDto;
 	}
 	
 

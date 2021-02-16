@@ -60,6 +60,18 @@ public class ActiviteAdminController {
 		return new ResponseEntity<ActiviteResponse>(newActivite, HttpStatus.CREATED);
 	}
 	
+	@GetMapping("/{id}")
+	public  ResponseEntity<ActiviteResponse> getOneActivite(@PathVariable(name="id") String codeActivite) {
+		
+		ActiviteDto activiteDto = activiteService.getActivite(codeActivite);
+		
+		ModelMapper modelMapper = new ModelMapper();
+		
+		ActiviteResponse activiteResponse = modelMapper.map(activiteDto, ActiviteResponse.class);
+		
+		return new ResponseEntity<ActiviteResponse>(activiteResponse, HttpStatus.OK);
+	}
+	
 	//updateActivite
 	
 	@PutMapping("update/{id}")

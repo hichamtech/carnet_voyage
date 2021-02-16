@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.brightcoding.app.ws.requests.DomaineActiviteRequest;
+import com.brightcoding.app.ws.responses.ActiviteResponse;
 import com.brightcoding.app.ws.responses.DomaineActiviteResponse;
 import com.brightcoding.app.ws.services.DomaineActiviteService;
+import com.brightcoding.app.ws.shared.dto.ActiviteDto;
 import com.brightcoding.app.ws.shared.dto.DomaineActiviteDto;
 
 @RestController
@@ -61,6 +63,17 @@ public class DomaineActiviteAdminController {
 		return new ResponseEntity<DomaineActiviteResponse>(newDomaine, HttpStatus.CREATED);
 	}
 
+	@GetMapping("/{id}")
+	public  ResponseEntity<DomaineActiviteResponse> getOneDomaine(@PathVariable(name="id") String codeDomaine) {
+		
+		DomaineActiviteDto addressDto = domaineService.getDomaine(codeDomaine);
+		
+		ModelMapper modelMapper = new ModelMapper();
+		
+		DomaineActiviteResponse activiteResponse = modelMapper.map(addressDto, DomaineActiviteResponse.class);
+		
+		return new ResponseEntity<DomaineActiviteResponse>(activiteResponse, HttpStatus.OK);
+	}
 
 	// update domaine
 	

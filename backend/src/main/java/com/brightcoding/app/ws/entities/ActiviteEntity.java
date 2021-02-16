@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,7 +36,7 @@ public class ActiviteEntity  implements Serializable{
     @Lob
 	private Byte[] photo;
     
-    @ManyToOne
+    @ManyToOne()
 	@JoinColumn(name="idDomaine")
     private DomaineActiviteEntity domaineActivite;
     

@@ -1,0 +1,46 @@
+
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>List All  Acitivite</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+
+        <th scope="col">Name</th>
+
+        <th scope="col">Descritpion</th>
+
+        <th scope="col">Prix</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of domaineData">
+        <td>{{ item.codeActivite }}</td>
+
+        <td>{{ item.name }}</td>
+
+        <td>{{ item.description }}</td>
+
+        <td>{{ item.price }}</td>
+      
+        <td style="display: flex">
+          <ion-button color="warning" size="small" routerLink='/activite-edit/{{item.codeActivite}}'>
+            <ion-icon name="create"></ion-icon>
+          </ion-button>
+          <ion-button color="danger" size="small" (click)="delete(item)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ion-button [routerLink]="['/activite-create']">
+    Add Activite
+  </ion-button>
+</ion-content>

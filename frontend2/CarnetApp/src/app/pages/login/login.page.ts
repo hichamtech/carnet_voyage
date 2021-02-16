@@ -10,51 +10,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  credentials: FormGroup;
+  credentials = {
+    email: 'saimon@devdactic.com',
+    pw: '123'
+  };
  
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthenticationService,
-    private alertController: AlertController,
+    private auth: AuthenticationService,
     private router: Router,
-    private loadingController: LoadingController
+    private alertCtrl: AlertController
   ) {}
  
-  ngOnInit() {
-    this.credentials = this.fb.group({
-      email: ['eve.holt@reqres.in', [Validators.required, Validators.email]],
-      password: ['cityslicka', [Validators.required, Validators.minLength(6)]],
-    });
-  }
+  ngOnInit() {}
  
-  async login() {
-    const loading = await this.loadingController.create();
-    await loading.present();
-    
-    this.authService.login(this.credentials.value).subscribe(
-      async (res) => {
-        await loading.dismiss();        
-        this.router.navigateByUrl('/tabs', { replaceUrl: true });
-      },
-      async (res) => {
-        await loading.dismiss();
-        const alert = await this.alertController.create({
-          header: 'Login failed',
-          message: res.error.error,
-          buttons: ['OK'],
+  login() {
+    this.auth.login(this.credentials).subscribe(async res => {
+      if (res) {
+        this.router.navigateByUrl('/members');
+      } else {
+        const alert = await this.alertCtrl.create({
+          header: 'Login Failed',
+          message: 'Wrong credentials.',
+          buttons: ['OK']
         });
- 
         await alert.present();
       }
-    );
-  }
- 
-  // Easy access for form fields
-  get email() {
-    return this.credentials.get('email');
-  }
-  
-  get password() {
-    return this.credentials.get('password');
+    });
   }
 }

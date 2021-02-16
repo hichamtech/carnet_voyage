@@ -1,0 +1,38 @@
+
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>List All  Domaine</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+
+        <th scope="col">Name</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of domaineData">
+        <td>{{ item.codeDomaine }}</td>
+
+        <td>{{ item.name }}</td>
+      
+        <td style="display: flex">
+          <ion-button color="warning" size="small" routerLink='/domaine-edit/{{item.codeDomaine}}'>
+            <ion-icon name="create"></ion-icon>
+          </ion-button>
+          <ion-button color="danger" size="small" (click)="delete(item)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ion-button [routerLink]="['/domaine-create']">
+    Add Domaine
+  </ion-button>
+</ion-content>
