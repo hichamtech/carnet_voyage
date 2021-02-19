@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Devdactic Auth</ion-title>
+    <ion-title>Mon Carnet de voyage</ion-title>
   </ion-toolbar>
 </ion-header>
  
@@ -12,7 +12,7 @@
  
       <ion-card>
         <ion-card-header>
-          <ion-card-title class="ion-text-center">Your Account</ion-card-title>
+          <ion-card-title class="ion-text-center">Votre Compte</ion-card-title>
         </ion-card-header>
  
         <ion-card-content>
@@ -23,13 +23,13 @@
           </ion-item>
  
           <ion-item lines="none">
-            <ion-label position="stacked">Password</ion-label>
+            <ion-label position="stacked">Mot de Passe</ion-label>
             <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="credentials.pw">
             </ion-input>
           </ion-item>
  
-          <ion-button (click)="login()" expand="block">Login</ion-button>
-          <ion-button expand="block" color="secondary" routerLink="/register" routerDirection="forward">Register
+          <ion-button (click)="login()" expand="block">Connexion</ion-button>
+          <ion-button expand="block" color="secondary" routerLink="/registration" routerDirection="forward">Inscription
           </ion-button>
  
         </ion-card-content>

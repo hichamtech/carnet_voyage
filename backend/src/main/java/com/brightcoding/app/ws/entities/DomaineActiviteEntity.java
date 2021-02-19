@@ -2,8 +2,11 @@ package com.brightcoding.app.ws.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,11 +29,11 @@ public class DomaineActiviteEntity implements Serializable {
 	private String codeDomaine;
     private String  name;
 
-	@OneToMany
-	@JoinColumn(name="idActivite")
-	private Collection<ActiviteEntity> activite ;
+	@OneToMany(mappedBy="domaineActivite", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<ActiviteEntity> activite ;
+	
 
-	public DomaineActiviteEntity(Long idDomaine, String codeDomaine,String name, Collection<ActiviteEntity> activite) {
+	public DomaineActiviteEntity(Long idDomaine, String codeDomaine,String name, List<ActiviteEntity> activite) {
 		super();
 		this.idDomaine = idDomaine;
 		this.name = name;
@@ -58,11 +61,11 @@ public class DomaineActiviteEntity implements Serializable {
 		this.name = name;
 	}
 
-	public Collection<ActiviteEntity> getActivite() {
+	public List<ActiviteEntity> getActivite() {
 		return activite;
 	}
 
-	public void setActivite(Collection<ActiviteEntity> activite) {
+	public void setActivite(List<ActiviteEntity> activite) {
 		this.activite = activite;
 	}
 

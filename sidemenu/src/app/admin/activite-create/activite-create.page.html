@@ -22,7 +22,7 @@
     <ion-item>
       <ion-label>Domaine</ion-label>
       <ion-select okText="Okay" cancelText="Dismiss"  (ionChange)="onChange($event)" >
-        <ion-select-option *ngFor="let item of domaineData" > {{item.codeDomaine}}  </ion-select-option>
+        <ion-select-option *ngFor="let item of domaineData" > {{item.name}}  </ion-select-option>
       
       </ion-select>
     </ion-item>

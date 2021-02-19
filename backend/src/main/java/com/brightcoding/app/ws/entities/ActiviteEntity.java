@@ -36,8 +36,8 @@ public class ActiviteEntity  implements Serializable{
     @Lob
 	private Byte[] photo;
     
-    @ManyToOne()
-	@JoinColumn(name="idDomaine")
+    @ManyToOne
+	@JoinColumn(name="id_domaine", referencedColumnName = "idDomaine", insertable = true, updatable = true)
     private DomaineActiviteEntity domaineActivite;
     
     @OneToMany(mappedBy = "activite")

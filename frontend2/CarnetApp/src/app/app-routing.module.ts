@@ -34,6 +34,42 @@ const routes: Routes = [
   //  canLoad: [AuthGuard] // Secure all child pages
   },
   {
+    path: 'domaine-create',
+    loadChildren: () => import('./pages/admin/domaine-create/domaine-create.module').then( m => m.DomaineCreatePageModule)
+  },
+  {
+    path: 'domaine-edit/:id',
+    loadChildren: () => import('./pages/admin/domaine-edit/domaine-edit.module').then( m => m.DomaineEditPageModule)
+  },
+  {
+    path: 'domaine-list',
+    loadChildren: () => import('./pages/admin/domaine-list/domaine-list.module').then( m => m.DomaineListPageModule)
+  },
+  {
+    path: 'domaine-detail',
+    loadChildren: () => import('./pages/admin/domaine-detail/domaine-detail.module').then( m => m.DomaineDetailPageModule)
+  },
+  {
+    path: 'activite-list',
+    loadChildren: () => import('./pages/admin/activite-list/activite-list.module').then( m => m.ActiviteListPageModule)
+  },
+  {
+    path: 'activite-edit/:id',
+    loadChildren: () => import('./pages/admin/activite-edit/activite-edit.module').then( m => m.ActiviteEditPageModule)
+  },
+  {
+    path: 'activite-delete',
+    loadChildren: () => import('./pages/admin/activite-delete/activite-delete.module').then( m => m.ActiviteDeletePageModule)
+  },
+  {
+    path: 'activite-detail',
+    loadChildren: () => import('./pages/admin/activite-detail/activite-detail.module').then( m => m.ActiviteDetailPageModule)
+  },
+  {
+    path: 'activite-create',
+    loadChildren: () => import('./pages/admin/activite-create/activite-create.module').then( m => m.ActiviteCreatePageModule)
+  },
+  {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
@@ -44,6 +80,13 @@ const routes: Routes = [
       import('./tabs/tabs.module').then(m => m.TabsPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'registration',
+    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
+  },
+  
+
+
 ];
 /*const routes: Routes = [
   {

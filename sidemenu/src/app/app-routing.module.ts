@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'domaine-create',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   
@@ -43,6 +43,14 @@ const routes: Routes = [
   {
     path: 'activite-create',
     loadChildren: () => import('./admin/activite-create/activite-create.module').then( m => m.ActiviteCreatePageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   }
 ];
 

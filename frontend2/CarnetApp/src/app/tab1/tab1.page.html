@@ -1,11 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-title>Activites</ion-title>
   </ion-toolbar>
 </ion-header>
- 
-<ion-content>
-  <ion-button expand="full" (click)="logout()">Logout</ion-button>
+<ion-content class="ion-padding">
+  <ion-content [fullscreen]="true">
+    <ion-searchbar
+      showcancelbutton=""
+      (ionInput)="filterList($event)"
+    ></ion-searchbar>
+  <ion-list>
+<ion-card *ngFor="let item of domaineData">
+  <img src="http://moroccotravelblog.com/mtb_uploads/2015/06/Moroccan-Boutique-Hotels-Riads-1024x717.jpg" alt="ion">
+  <ion-card-header>
+    <ion-card-title>{{ item.name }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    {{ item.description }}
+  </ion-card-content>
+
+  <ion-footer>
+    <ion-row>
+    
+      <ion-col center text-center>
+        <ion-button [routerLink]="['/activite-create']">
+          Enregister
+        </ion-button>
+      </ion-col>
+      
+    </ion-row>
+  </ion-footer>
+</ion-card>
+
+</ion-list>
 </ion-content>
