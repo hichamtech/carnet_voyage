@@ -52,7 +52,7 @@ public class UserEntity implements Serializable {
 	@Column(nullable=false)
 	private Boolean emailVerificationStatus = false;
 
-	 @OneToMany(mappedBy = "client")
+	 @OneToMany(mappedBy = "user")
 	 Set<SejourEntity>  sejour;
 
 	public long getId() {

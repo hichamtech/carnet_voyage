@@ -3,18 +3,22 @@ package com.brightcoding.app.ws.shared.dto;
 import com.brightcoding.app.ws.entities.DomaineActiviteEntity;
 
 public class ActiviteDto {
-	private String codeActivite;
-    private  String name;
-    private double price;
-    private String description;
-    
-    
-  
-	private Byte[] photo;
-    
 
+	private  long id ;
+	private  String codeActivite;
+    private  String name;
+    private  double price;
+    private  String description;
+	private  Byte[] photo;
     private DomaineActiviteEntity domaineActivite;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getCodeActivite() {
 		return codeActivite;

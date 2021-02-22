@@ -43,7 +43,6 @@ public class ActiviteServiceImpl implements ActiviteService {
 		ActiviteEntity newActivite = activiteRespositroy.save(activiteEntity);
 
 		ActiviteDto activiteDto = modelMapper.map(newActivite, ActiviteDto.class);
-
 		
 		return activiteDto;
 	}

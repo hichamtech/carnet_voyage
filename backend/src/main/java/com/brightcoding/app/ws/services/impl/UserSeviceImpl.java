@@ -24,7 +24,6 @@ import com.brightcoding.app.ws.shared.Utils;
 import com.brightcoding.app.ws.shared.dto.UserDto;
 
 
-
 @Service
 public class UserSeviceImpl implements UserService {
 
@@ -42,16 +41,12 @@ public class UserSeviceImpl implements UserService {
 	public UserDto createUser(UserDto user) {
 		
 		UserEntity checkUser = userRepository.findByEmail(user.getEmail());
-		
+
 		if(checkUser != null) throw new RuntimeException("User Alrady Exists !");
-		
-		
-	
 		
         ModelMapper modelMapper = new ModelMapper();
 		
 		UserEntity userEntity = modelMapper.map(user, UserEntity.class);
-		
 		
 		userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		
